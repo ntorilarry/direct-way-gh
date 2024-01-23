@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    font-family: "Product Sans";
+  }
+}
+
+.font-pj {
+  font-family: "Trap";
+}
+/* .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    width: 30px;
+    border-radius: 5px;
+    transition: 0.4s;
+  } */
+.bgg {
+  background-image: url(./assets//images//bghero.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  width: 30px;
+  border-radius: 5px;
+  transition: 0.4s;
+}
+
+.swiper-pagination {
+  position: initial !important;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sidelink.active {
+  background-color: rgb(229 231 235);
+}
+
+.cardd {
+  border-radius: 10px;
+  background: var(--White, #fff);
+
+  /* Drop Shadow */
+  box-shadow: 5px 10px 30px 0px rgba(0, 0, 0, 0.05);
+}

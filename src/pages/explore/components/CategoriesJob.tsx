@@ -92,13 +92,12 @@ export default function CategoriesJob() {
   const limit = 9;
   const [totalItems, setTotalItems] = useState(0);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
-  const [sortOrder, setSortOrder] = useState<"up" | "down">("down");
 
   const fetchAllJob = async (page: number) => {
     setLoading(true);
 
     const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}/jobs?page=${page}&limit=${limit}&categories=${selectedCategory}&sort=${sortOrder}`
+      `${process.env.REACT_APP_BASE_URL}/jobs?page=${page}&limit=${limit}&categories=${selectedCategory}`
     );
     setAllJobs(response.data.data.results);
     setTotalItems(response.data.data.totalCount);
@@ -106,14 +105,10 @@ export default function CategoriesJob() {
   };
   useEffect(() => {
     fetchAllJob(page);
-  }, [page, selectedCategory, sortOrder]);
+  }, [page, selectedCategory]);
 
   const handlePageChange = (page: number) => {
     setPage(page);
-  };
-
-  const handleSortClick = (newSortOrder: "up" | "down") => {
-    setSortOrder(newSortOrder);
   };
 
   useEffect(() => {
@@ -125,7 +120,7 @@ export default function CategoriesJob() {
     }
 
     fetchAllJob(page);
-  }, [page, selectedCategory, sortOrder]);
+  }, [page, selectedCategory]);
 
   return (
     <div>
@@ -277,46 +272,7 @@ export default function CategoriesJob() {
                     leave="transition ease-in duration-75"
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <div className="py-1">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                sortOrder === "down"
-                                  ? "font-medium text-gray-900"
-                                  : "text-gray-500",
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm"
-                              )}
-                              onClick={() => handleSortClick("down")}
-                            >
-                              Most Popular
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                sortOrder === "up"
-                                  ? "font-medium text-gray-900"
-                                  : "text-gray-500",
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm"
-                              )}
-                              onClick={() => handleSortClick("up")}
-                            >
-                              Newest
-                            </a>
-                          )}
-                        </Menu.Item>
-                      </div>
-                    </Menu.Items>
-                  </Transition>
+                  ></Transition>
                 </Menu>
 
                 <button

@@ -26,7 +26,7 @@ import ProLogin from "./pages/auth/ProLogin";
 import ApplyJob from "./pages/apply_job/ApplyJob";
 import { ChatSupport } from "./pages/chat/ChatSupport";
 import AboutUs from "./pages/about_us/AboutUs";
-import { ProfileProvider } from "./pages/profile/ProfileContext";
+import Construction from "./pages/404/Construction";
 
 function App() {
   return (
@@ -44,11 +44,11 @@ function App() {
         <link rel="canonical" href="https://directwayzgh.com/" />
       </Helmet>
       <div className="App">
-        {/* <Construction/> */}
+        <Construction/>
         <GoogleTagManager />
         <ScrollToTop />
         <Toaster />
-        <Routes>
+        {/* <Routes>
           <Route>
             <Route path="/" element={<Home />} />
             <Route path="/jobs" element={<Jobs />} />
@@ -63,14 +63,7 @@ function App() {
             <Route path="/profile" element={<FullProfile />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/faqs" element={<Faq />} />
-            <Route
-              path="/chats"
-              element={
-                <ProfileProvider>
-                  <ChatSupport />
-                </ProfileProvider>
-              }
-            />
+            <Route path="/chats" element={<ChatSupport />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/apply-job" element={<ApplyJob />} />
             <Route path="/pro/register" element={<ProRegister />} />
@@ -78,7 +71,7 @@ function App() {
             <Route path="/pro/dashboard" element={<Index />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
-        </Routes>
+        </Routes> */}
       </div>
     </HelmetProvider>
   );

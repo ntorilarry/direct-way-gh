@@ -9,11 +9,8 @@ function ProfileNav() {
   let navigate = useNavigate();
 
   const handleLogout = () => {
-    //
-    // Call the logout function to log the user out
     logout();
     navigate("/login");
-    window.location.reload();
   };
   return (
     <div className="pl-2 z-90 text-right">

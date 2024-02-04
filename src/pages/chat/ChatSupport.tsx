@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import Navbar from "../../shared/Navbar";
 import Footer from "../../shared/Footer";
 import Io, { Socket } from "socket.io-client";
@@ -6,12 +6,12 @@ import IChat, { IChatMessage } from "../../models/ChatModels";
 import { IApiResponse } from "../../interface";
 import Sender from "./Sender";
 import Receiver from "./Receiver";
-import { useProfileContext } from "../profile/ProfileContext";
+import AuthContext from "../auth/utils/AuthContext";
 
 let socket: Socket;
 
 export const ChatSupport = () => {
-  const { userId } = useProfileContext();
+  const { userId } = useContext(AuthContext);
   console.log("chatSender", userId);
   const [messages, setMessages] = useState<IChat[]>([]);
   const [chatMessage, setChatMessage] = useState<IChatMessage>({

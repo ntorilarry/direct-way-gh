@@ -1,11 +1,12 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import ErrorToast from "../../shared/ErrorToast";
 import SuccessToast from "../../shared/SuccessToast";
 import Navbar from "../../shared/Navbar";
 import Footer from "../../shared/Footer";
 import { ThreeDots } from "react-loader-spinner";
+import AuthContext from "./utils/AuthContext";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -13,6 +14,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
 
   let navigate = useNavigate();
+  const authContext = useContext(AuthContext);
 
   const [successmodalIsOpen, setSuccessModalIsOpen] = useState(false);
   const [errormodalIsOpen, setErrorModalIsOpen] = useState(false);
@@ -41,8 +43,10 @@ function Login() {
         console.log("login", response.data);
         if (response.data.code === 200) {
           localStorage.setItem("token", response.data.data.token);
+          console.log("token", response.data.data.token);
+          authContext.login(response.data.data.user.id);
+          console.log("user login id", response.data.data.user.id);
           navigate("/");
-          window.location.reload();
         } else {
           setModalMessage("Invalid email or password");
           setErrorModalIsOpen(true);

@@ -9,8 +9,9 @@ import {
 } from "@heroicons/react/24/outline";
 import Logo1 from "../assets/icons/Logo1.png";
 import { Link } from "react-router-dom";
-import ProfileNav from "../pages/profile/ProfileNav";
+
 import AuthContext from "../pages/auth/utils/AuthContext";
+import ProfileNav from "../pages/profile/ProfileNav";
 
 const navigation = {
   pages: [

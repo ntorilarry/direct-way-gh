@@ -44,11 +44,11 @@ function App() {
         <link rel="canonical" href="https://directwayzgh.com/" />
       </Helmet>
       <div className="App">
-        <Construction/>
+{/*         <Construction/> */}
         <GoogleTagManager />
         <ScrollToTop />
         <Toaster />
-        {/* <Routes>
+        <Routes>
           <Route>
             <Route path="/" element={<Home />} />
             <Route path="/jobs" element={<Jobs />} />
@@ -71,7 +71,7 @@ function App() {
             <Route path="/pro/dashboard" element={<Index />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
-        </Routes> */}
+        </Routes>
       </div>
     </HelmetProvider>
   );
